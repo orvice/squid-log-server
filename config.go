@@ -12,8 +12,8 @@ type config struct {
 }
 
 func InitCfg() {
-	Conf.Protocol = env("PROTOCOL","tcp")
-	Conf.Protocol = env("BIND",":8801")
+	Conf.Protocol = env("PROTOCOL", "tcp")
+	Conf.Protocol = env("BIND", ":8801")
 }
 
 func env(key, defaultValue string) string {

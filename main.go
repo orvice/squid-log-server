@@ -1,13 +1,14 @@
 package main
 
 import (
-	"net"
-	log "github.com/cihub/seelog"
-	"time"
 	"fmt"
+	log "github.com/cihub/seelog"
+	"net"
+	"time"
 )
 
 func main() {
+	log.Info("boot....")
 	InitCfg()
 	l, err := net.Listen(Conf.Protocol, Conf.Bind)
 	if err != nil {
@@ -24,8 +25,6 @@ func main() {
 		go handleConn(c)
 	}
 }
-
-
 
 func handleConn(conn net.Conn) error {
 	conn.SetReadDeadline(time.Now().Add(2 * time.Second))
@@ -44,5 +43,5 @@ func handleConn(conn net.Conn) error {
 			break // connection already closed by client
 		}
 	}
-	handleLog(string(request))
+	return handleLog(string(request))
 }
