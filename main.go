@@ -2,17 +2,20 @@ package main
 
 import (
 	"fmt"
-	log "github.com/cihub/seelog"
+	log "github.com/Sirupsen/logrus"
 	"net"
+	"os"
 	"time"
 )
 
 func main() {
+	log.SetOutput(os.Stdout)
+
 	log.Info("boot....")
 	InitCfg()
 	l, err := net.Listen(Conf.Protocol, Conf.Bind)
 	if err != nil {
-		log.Error("listen error:", err)
+		log.Error("listen error:", err, " net conf: ", Conf)
 		return
 	}
 

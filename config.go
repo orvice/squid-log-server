@@ -1,6 +1,9 @@
 package main
 
-import "os"
+import (
+	log "github.com/Sirupsen/logrus"
+	"os"
+)
 
 var (
 	Conf = new(config)
@@ -13,12 +16,14 @@ type config struct {
 
 func InitCfg() {
 	Conf.Protocol = env("PROTOCOL", "tcp")
-	Conf.Protocol = env("BIND", ":8801")
+	Conf.Bind = env("BIND", ":8801")
 }
 
 func env(key, defaultValue string) string {
 	v := os.Getenv(key)
-	if key == "" {
+	log.Infof("get key: %s, value: %s", key, v)
+	if len(v) == 0 {
+		log.Info("using default value:", defaultValue)
 		return defaultValue
 	}
 	return v
