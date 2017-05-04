@@ -27,6 +27,6 @@ func handleUdpConn(conn *net.UDPConn) {
 		log.Errorf("len %d  error: %s", n, err.Error())
 		return
 	}
-	log.Debugf("udp conn from %s  buf: %s ", addr, string(buf[:n]))
+	log.Debugf("udp conn from %s  buf: %s ", addr)
 	go handleLog(string(buf[:n]))
 }
