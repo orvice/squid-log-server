@@ -9,7 +9,7 @@ ADD .  /go/src/github.com/orvice/squid-log-server
 RUN go-wrapper download
 RUN go-wrapper install
 
-EXPOSE 8801
+EXPOSE 8801 8802
 
 # Now tell Docker what command to run when the container starts
 CMD ["go-wrapper", "run"]
