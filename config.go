@@ -11,12 +11,14 @@ var (
 
 type config struct {
 	Protocol string
-	Bind     string
+	TcpBind  string
+	UdpBind  string
 }
 
 func InitCfg() {
 	Conf.Protocol = env("PROTOCOL", "tcp")
-	Conf.Bind = env("BIND", ":8801")
+	Conf.TcpBind = env("TCP_BIND", ":8801")
+	Conf.UdpBind = env("UDP_BIND", ":8802")
 }
 
 func env(key, defaultValue string) string {
