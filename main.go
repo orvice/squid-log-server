@@ -9,7 +9,7 @@ import (
 
 func Init() {
 	log.SetOutput(os.Stdout)
-
+	log.SetLevel(log.DebugLevel)
 	log.Info("boot....")
 	InitCfg()
 }
