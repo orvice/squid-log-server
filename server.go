@@ -14,7 +14,7 @@ func handleLog(l string) error {
 		if len(s) < 10{
 			continue
 		}
-		log.Debugf("user %s  traffic %s",s[7],s[1])
+		log.Debugf("user %s  traffic %s",s[7],s[4])
 	}
 	return nil
 }
