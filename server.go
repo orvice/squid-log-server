@@ -15,10 +15,10 @@ func handleLog(l string) error {
 		if len(s) < 8 {
 			continue
 		}
-		for key,value := range s{
-			log.Debugf("key: %d value %s",key,value)
-		}
-		log.Debugf("user %s  traffic %s", s[7], s[4])
+		//for key,value := range s{
+		//	log.Debugf("key: %d value %s",key,value)
+		//}
+		log.Debugf("user %s  traffic %s", s[10], s[7])
 
 	}
 	return nil
