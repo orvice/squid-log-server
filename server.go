@@ -10,7 +10,7 @@ func handleLog(l string) error {
 	arr := strings.Split(l, "\n")
 	log.Infof("len: %d ", len(arr))
 	for _, v := range arr {
-		s := strings.Split(v, ",")
+		s := strings.Split(v, " ")
 		log.Debugf("processing  %s  len: %d", v, len(s))
 		if len(s) < 8 {
 			continue
