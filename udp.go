@@ -21,10 +21,11 @@ func startUdpServer() {
 }
 
 func handleUdpConn(conn *net.UDPConn) {
-	var buf [512]byte
-	_, addr, err := conn.ReadFromUDP(buf[0:])
+	var buf [5120]byte
+	n, addr, err := conn.ReadFromUDP(buf[0:])
 	if err != nil {
+		log.Errorf("len %d  error: %s", n, err.Error())
 		return
 	}
-	log.Debugf("udp conn from %s  buf: %s ", addr, string(buf[:]))
+	log.Debugf("udp conn from %s  buf: %s ", addr, string(buf[:n]))
 }
