@@ -7,7 +7,7 @@ import (
 
 func handleLog(l string) error {
 	log.Info("get log: ", l)
-	arr := strings.Split(l, " ")
+	arr := strings.Split(l, "\n")
 	log.Infof("len: %d ", len(arr))
 	return nil
 }
