@@ -5,6 +5,10 @@ image: docker:latest
 services:
   - docker:dind
 
+stages:
+    - build
+    - deploy_dev
+
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
 
@@ -17,3 +21,8 @@ build:
     - docker push "$CI_REGISTRY_IMAGE:$IMAGE_TAG"
     - docker tag "$CI_REGISTRY_IMAGE:$IMAGE_TAG" "$CI_REGISTRY_IMAGE:latest"
     - docker push "$CI_REGISTRY_IMAGE:latest"
+
+deploy_dev:
+  stage: deploy_dev
+  script:
+    - curl -X GET -H "$AUTH_HEADER"  "$JENKINS_URL"
