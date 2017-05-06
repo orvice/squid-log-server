@@ -28,12 +28,12 @@ func handleLog(l string) error {
 		log.Debugf("user %s  traffic %s", sArr[7], sArr[4])
 		u, err := strconv.Atoi(sArr[7])
 		if err != nil {
-			log.Error(err)
+			log.Error("error on get user id ", err)
 			continue
 		}
 		d, err := strconv.Atoi(sArr[4])
 		if err != nil {
-			log.Error(err)
+			log.Error("error on get traffic ", err)
 		}
 		l := musdk.UserTrafficLog{
 			UserId: int64(u),
@@ -41,7 +41,7 @@ func handleLog(l string) error {
 		}
 		logs = append(logs, l)
 	}
-	log.Info("start update traffic to api")
+	log.Info("start update traffic to api", logs)
 	err := client.UpdateTraffic(logs)
 	if err != nil {
 		log.Errorf("error on update traffic  %s", err.Error())
