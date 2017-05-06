@@ -16,10 +16,10 @@ func handleLog(l string) error {
 			continue
 		}
 		var sArr []string
-		for _,value := range s{
+		for _, value := range s {
 			//log.Debugf("key: %d value %s",key,value)
 			if len(value) != 0 {
-				sArr = append(sArr,value)
+				sArr = append(sArr, value)
 			}
 		}
 		log.Debugf("user %s  traffic %s", sArr[7], sArr[4])

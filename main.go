@@ -12,6 +12,7 @@ func Init() {
 	log.SetLevel(log.DebugLevel)
 	log.Info("boot....")
 	InitCfg()
+	InitMu()
 }
 
 func waitSignal() {
