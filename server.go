@@ -40,6 +40,7 @@ func handleLog(l string) error {
 		}
 		logs = append(logs, l)
 	}
+	log.Info("start update traffic to api")
 	err := client.UpdateTraffic(logs)
 	if err != nil {
 		log.Errorf("error on update traffic  %s", err.Error())
