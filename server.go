@@ -28,6 +28,7 @@ func handleLog(l string) error {
 		log.Debugf("user %s  traffic %s", sArr[7], sArr[4])
 		u, err := strconv.Atoi(sArr[7])
 		if err != nil {
+			log.Error(err)
 			continue
 		}
 		d, err := strconv.Atoi(sArr[4])
