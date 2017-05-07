@@ -43,13 +43,14 @@ func (lq *LogQueue) SyncToApi() error {
 	tmpLogs := make([]musdk.UserTrafficLog, len(logMap))
 	a := 0
 	for k, v := range logMap {
-		log := musdk.UserTrafficLog{
+		ul := musdk.UserTrafficLog{
 			UserId: k,
 			D:      v,
 		}
-		tmpLogs[a] = log
+		tmpLogs[a] = ul
 		a++
 	}
+	log.Infof("start sync logs to api len: %d", len(tmpLogs))
 	return client.UpdateTraffic(tmpLogs)
 }
 
