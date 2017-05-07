@@ -30,6 +30,8 @@ func (lq *LogQueue) SyncToApi() error {
 	copy(tmp, lq.logs)
 	lq.lock.Unlock()
 
+	log.Infof("proccing tmp logs len %d", len(tmp))
+
 	logMap := map[int64]int64{}
 	for _, v := range tmp {
 		_, ok := logMap[v.UserId]
