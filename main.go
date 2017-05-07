@@ -32,6 +32,7 @@ func main() {
 	Init()
 	go startTcpServer()
 	go startUdpServer()
+	go SyncQueue()
 
 	waitSignal()
 }

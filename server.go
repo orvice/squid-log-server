@@ -11,7 +11,7 @@ func handleLog(l string) error {
 	log.Info("get log: ", l)
 	arr := strings.Split(l, "\n")
 	log.Infof("len: %d ", len(arr))
-	var logs []musdk.UserTrafficLog
+	// var logs []musdk.UserTrafficLog
 	for _, v := range arr {
 		s := strings.Split(v, " ")
 		log.Debugf("processing  %s  len: %d", v, len(s))
@@ -39,12 +39,13 @@ func handleLog(l string) error {
 			UserId: int64(u),
 			D:      int64(d),
 		}
-		logs = append(logs, l)
+		//logs = append(logs, l)
+		Queue.Append(l)
 	}
-	log.Info("start update traffic to api", logs)
-	err := client.UpdateTraffic(logs)
-	if err != nil {
-		log.Errorf("error on update traffic  %s", err.Error())
-	}
+	//log.Info("start update traffic to api", logs)
+	//err := client.UpdateTraffic(logs)
+	//if err != nil {
+	//	log.Errorf("error on update traffic  %s", err.Error())
+	//}
 	return nil
 }
