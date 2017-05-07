@@ -28,6 +28,7 @@ func (lq *LogQueue) SyncToApi() error {
 
 	tmp := make([]musdk.UserTrafficLog, len(lq.logs))
 	copy(tmp, lq.logs)
+	lq.logs = []musdk.UserTrafficLog{}
 	lq.lock.Unlock()
 
 	log.Infof("proccing tmp logs len %d", len(tmp))
