@@ -62,6 +62,8 @@ func InitQueue() {
 }
 
 func SyncQueue() {
+	log.Info("init sync queue")
+	time.Sleep(time.Second * 60)
 	for {
 		err := Queue.SyncToApi()
 		if err != nil {
